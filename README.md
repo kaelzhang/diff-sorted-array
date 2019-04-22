@@ -23,7 +23,13 @@ Diff two sorted array for best performance.
 $ npm i diff-sorted-array
 ```
 
-## diff(a, b, sorter)
+## Usage
+
+```js
+const {diff, asc, desc} = require('diff-sorted-array')
+```
+
+### diff(a, b, sorter)
 
 - **a** `Array`
 - **b** `Array`
@@ -32,7 +38,6 @@ $ npm i diff-sorted-array
 `diff` only accepts two arrays that both have already been sorted to speed up the matching.
 
 ```js
-const diff = require('diff-sorted-array')
 const sorter = (a, b) => a > b
   ? 1
   : - 1
@@ -54,6 +59,10 @@ result.added
 result.deleted
 // [1]
 ```
+
+### `asc` and `desc`
+
+Built-in sorter to sort arrays in ascending or descending order.
 
 ## License
 

@@ -1,4 +1,4 @@
-module.exports = (o, n, sorter) => {
+const diff = (o, n, sorter) => {
   const nl = n.length
   let ni = 0
   let nv
@@ -46,4 +46,13 @@ module.exports = (o, n, sorter) => {
     added,
     deleted
   }
+}
+
+const asc = (a, b) => a > b ? 1 : - 1
+const desc = (a, b) => a < b ? 1 : - 1
+
+module.exports = {
+  diff,
+  asc,
+  desc
 }

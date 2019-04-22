@@ -1,8 +1,5 @@
 const test = require('ava')
-const diff = require('../src')
-
-const asc = (a, b) => a > b ? 1 : - 1
-const desc = (a, b) => a < b ? 1 : - 1
+const {diff, asc, desc} = require('../src')
 
 const CASES = [
   [[2, 3, 1], [3, 4, 2], [2, 3], [4], [1]],
