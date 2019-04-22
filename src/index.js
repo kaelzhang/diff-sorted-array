@@ -1,4 +1,4 @@
-const diff = (o, n, sorter) => {
+const justDiff = (o, n, sorter) => {
   const nl = n.length
   let ni = 0
   let nv
@@ -51,8 +51,16 @@ const diff = (o, n, sorter) => {
 const asc = (a, b) => a > b ? 1 : - 1
 const desc = (a, b) => a < b ? 1 : - 1
 
+const diff = (a, b) => {
+  a.sort(asc)
+  b.sort(asc)
+
+  return justDiff(a, b, asc)
+}
+
 module.exports = {
-  diff,
+  justDiff,
   asc,
-  desc
+  desc,
+  diff
 }

@@ -26,29 +26,19 @@ $ npm i diff-sorted-array
 ## Usage
 
 ```js
-const {diff, asc, desc} = require('diff-sorted-array')
+const {diff, justDiff, asc, desc} = require('diff-sorted-array')
 ```
 
-### diff(a, b, sorter)
+### diff(a, b)
 
 - **a** `Array`
 - **b** `Array`
-- **sorter** `Function(a: any, b: any): number` the compareFunction of `Array.prototype.sort(compareFunction)`
-
-`diff` only accepts two arrays that both have already been sorted to speed up the matching.
 
 ```js
-const sorter = (a, b) => a > b
-  ? 1
-  : - 1
+const a = [2, 3, 1]
+const b = [3, 4, 2]
 
-const a = [2, 3, 1]  // -> [1, 2, 3]
-const b = [3, 4, 2]  // -> [2, 3, 4]
-
-a.sort(sorter)
-b.sort(sorter)
-
-const result = justDiff(a, b, sorter)
+const result = diff(a, b, sorter)
 
 result.unchanged
 // [2, 3]
@@ -58,6 +48,29 @@ result.added
 
 result.deleted
 // [1]
+```
+
+### justDiff(a, b, sorter)
+
+- **sorter** `Function(a: any, b: any): number` the compareFunction of `Array.prototype.sort(compareFunction)`
+
+Sometimes we want to do the sorting ourself, so that we can manage the process to increase performance.
+
+`justDiff` only accepts two arrays that both have already been sorted to speed up the matching.
+
+```js
+const sorter = (a, b) => a > b
+  ? 1
+  : - 1
+
+const a = [2, 3, 1]
+const b = [3, 4, 2]
+
+a.sort(sorter)
+b.sort(sorter)
+
+justDiff(a, b, sorter)
+// The same result as above
 ```
 
 ### `asc` and `desc`
